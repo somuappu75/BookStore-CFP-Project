@@ -23,7 +23,7 @@ namespace RepositoryLayer.Service
         //To register A User 
         public UserModel RegisterUser(UserModel userModel)
         {
-            sqlConnection = new SqlConnection(this.Configuration.GetConnectionString("BookStoreDB"));
+            sqlConnection = new SqlConnection(this.Configuration.GetConnectionString("BookStore App"));
 
             try
             {
