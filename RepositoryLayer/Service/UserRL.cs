@@ -14,7 +14,7 @@ namespace RepositoryLayer.Service
 {
    public class UserRL:IUserRL
     {
-        private IConfiguration Configuration;
+        private IConfiguration Configuration { get; }
         private SqlConnection sqlConnection;
         public UserRL(IConfiguration Configuration)
         {
@@ -23,7 +23,7 @@ namespace RepositoryLayer.Service
         //To register A User 
         public UserModel RegisterUser(UserModel userModel)
         {
-            sqlConnection = new SqlConnection(this.Configuration.GetConnectionString("BookStore App"));
+            sqlConnection = new SqlConnection(this.Configuration.GetConnectionString("BookStoreDB"));
 
             try
             {
@@ -80,6 +80,9 @@ namespace RepositoryLayer.Service
                 signingCredentials: credentials);
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+
+
 
         public string Login(string email, string password)
         {
