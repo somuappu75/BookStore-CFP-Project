@@ -14,7 +14,7 @@ namespace RepositoryLayer.Service
 {
    public class UserRL:IUserRL
     {
-        private IConfiguration Configuration;
+        private IConfiguration Configuration { get; }
         private SqlConnection sqlConnection;
         public UserRL(IConfiguration Configuration)
         {
@@ -80,6 +80,9 @@ namespace RepositoryLayer.Service
                 signingCredentials: credentials);
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+
+
 
         public string Login(string email, string password)
         {

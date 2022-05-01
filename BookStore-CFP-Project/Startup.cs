@@ -35,9 +35,12 @@ namespace BookStore_CFP_Project
             services.AddControllers();
             services.AddTransient<IUserBL, UserBL>();
             services.AddTransient<IUserRL, UserRL>();
+            services.AddTransient<IBookBL, BookBL>();
+            services.AddTransient<IBookRL, BookRL>();
+            services.AddMemoryCache();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = " BookStoreDB " });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = " BookStoreDB App" });
                 var securitySchema = new OpenApiSecurityScheme
                 {
                     Description = "Using the Authorization header with the Bearer scheme.",
@@ -87,9 +90,9 @@ namespace BookStore_CFP_Project
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization();
+         
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
